@@ -1,0 +1,32 @@
+import subprocess 
+
+
+network_address = input("Please enter network address: ") 
+network_address_list = network_address.split(".")
+netcount = [x for x in network_address_list if x.isdigit()]
+
+#print (netcount)
+a = netcount[0]
+b = netcount[1]
+c = netcount[2]
+d = netcount[3]
+dot = '.'
+
+address = a + dot + b + dot + c + dot #print(address)
+
+a = int(input ("enter a host: ")) #User input 2nd number and adds 1 to (remember pythons read as a zero)
+b = int(1) + int(input ("b host "))
+
+
+for multipleHost in range(a,b):
+        scan_address = address + str (MultipeHost)
+        output = subprocess.run(['ping', scan_address, '-n', '1'], capture_output=True, text=True )
+        newoutput = output.stdout.split ()
+
+        for everyLine in newoutput:
+             if everyLine.count ("TTL"):
+                print (scan_address, "---> live")
+             elif everyLine.count ("unreachable") :
+                print (scan_address, "---› offline")
+             elif everyLine.count ("timed"):
+                print (scan_address,"---> oftline")
